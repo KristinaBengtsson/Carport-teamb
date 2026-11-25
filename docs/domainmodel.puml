@@ -10,12 +10,10 @@ object Admin
 Admin : mail
 Admin : password
 
-
 object Carport
 Carport : længde
 Carport : højde
 Carport : bredde
-Carport : skur
 
 object Lager
 object Tegning
@@ -29,7 +27,6 @@ Stykliste : pris
 
 object Mail
 object Sælger
-object Materialer
 object Betaling
 
 object Stolpe
@@ -38,16 +35,20 @@ object Rem
 object Spær
 object Tagplader
 
-Kunde "1" -- "0..*" Ordre
-Admin "1" -- "0..*" Ordre
-Ordre -- Carport
-Carport "1" -- "1..*" Stykliste
-Stykliste -- Stolpe
-Stykliste -- Stern
-Stykliste -- Rem
-Stykliste -- Spær
-Stykliste -- Tagplader
-Betaling -- Ordre
-
+Kunde "1" --- "0..*" Ordre
+Admin "1" --- "0..*" Ordre
+Ordre --- Carport
+Carport "1" --- "1..*" Stykliste
+Stykliste --- Stolpe
+Stykliste --- Stern
+Stykliste --- Rem
+Stykliste --- Spær
+Stykliste --- Tagplader
+Betaling --- Ordre
+Sælger ---  Ordre
+Lager "1" --- "0..*" Stykliste
+Tegning "1" --- "1" Carport
+Mail --- Sælger
+Mail --- Kunde
 
 @enduml
