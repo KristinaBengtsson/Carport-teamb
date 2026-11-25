@@ -44,11 +44,13 @@ Stykliste --- Stern
 Stykliste --- Rem
 Stykliste --- Spær
 Stykliste --- Tagplader
-Betaling --- Ordre
+Betaling --- Ordre :has-a
 Sælger ---  Ordre
-Lager "1" --- "0..*" Stykliste
-Tegning "1" --- "1" Carport
+Lager "1" --- "0..*" Stykliste :has
+Tegning "1" --- "1" Carport :has-a
 Mail --- Sælger
 Mail --- Kunde
+Admin --- Lager :manages
+Sælger "1" --- "...*" Kunde :has
 
 @enduml
