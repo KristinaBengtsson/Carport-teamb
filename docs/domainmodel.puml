@@ -1,0 +1,53 @@
+@startuml
+!pragma layout smetana
+
+object Kunde
+Kunde : navn
+Kunde : mail
+Kunde : (password)
+
+object Admin
+Admin : mail
+Admin : password
+
+
+object Carport
+Carport : længde
+Carport : højde
+Carport : bredde
+Carport : skur
+
+object Lager
+object Tegning
+object Ordre
+Ordre : status
+Ordre : samlet pris
+
+object Stykliste
+Stykliste : beskrivelse
+Stykliste : pris
+
+object Mail
+object Sælger
+object Materialer
+object Betaling
+
+object Stolpe
+object Stern
+object Rem
+object Spær
+object Tagplader
+
+Kunde "1" -- "0..*" Ordre
+Admin "1" -- "0..*" Ordre
+Ordre -- Carport
+Carport "1" -- "1..*" Stykliste
+Stykliste -- Stolpe
+Stykliste -- Stern
+Stykliste -- Rem
+Stykliste -- Spær
+Stykliste -- Tagplader
+Betaling -- Ordre
+
+
+@enduml
