@@ -15,19 +15,27 @@ Carport : længde
 Carport : højde
 Carport : bredde
 
-object Lager
+
 object Tegning
+object Materialer
+Materialer : type
+Materialer : pris
 object Ordre
 Ordre : status
 Ordre : samlet pris
 
 object Stykliste
 Stykliste : beskrivelse
-Stykliste : pris
+Stykliste : antal
+Stykliste : længde
 
 object Mail
 object Sælger
 object Betaling
+object Tilbud
+Tilbud : pris
+Tilbud : dato
+Tilbud : status
 
 object Stolpe
 object Stern
@@ -37,20 +45,24 @@ object Tagplader
 
 Kunde "1" --- "0..*" Ordre
 Admin "1" --- "0..*" Ordre
-Ordre --- Carport
+Ordre --- Carport :contains
 Carport "1" --- "1..*" Stykliste
-Stykliste --- Stolpe
-Stykliste --- Stern
-Stykliste --- Rem
-Stykliste --- Spær
-Stykliste --- Tagplader
-Betaling --- Ordre :has-a
+
+Tilbud --- Ordre :has-a
+Stykliste --- Materialer
+Betaling --- Tilbud :has-a
 Sælger ---  Ordre
-Lager "1" --- "0..*" Stykliste :has
 Tegning "1" --- "1" Carport :has-a
 Mail --- Sælger
+Mail --- Admin
 Mail --- Kunde
-Admin --- Lager :manages
+Admin --- Materialer :manages
+
 Sælger "1" --- "...*" Kunde :has
+Materialer --- Stolpe
+Materialer --- Stern
+Materialer --- Rem
+Materialer --- Spær
+Materialer --- Tagplader
 
 @enduml
