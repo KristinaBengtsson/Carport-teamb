@@ -1,0 +1,162 @@
+@startuml
+!pragma layout smetana
+left to right direction
+
+
+abstract class User {
+- id : int
+- name : String
+- mail : String
+- phoneNumber : String
+- address : String
+- password : String
+- userType : String
++ getId() : int
++ getName() : String
++ getMail() : String
++ getPhoneNumber() : String
++ getAddress() : String
++ getPassword() : String
++ getUserType() : String
++ setId() : void
++ setName() : void
++ setMail() : void
++ setPhoneNumber() : void
++ setAddress() : void
++ setPassword() : void
++ setUserType() : void
+}
+
+class Admin extends Seller {
+
+}
+
+class Seller extends User {
+
+}
+
+class Customer extends User {
+
+}
+
+class Order {
+- id : int
+- carport : Carport
+- sellerId : int
+- status : String
+- totalPrice : double
+- date : LocalDateTime
++ getId() : int
++ getCarport() : List<Carport>
++ getSellerId() : int
++ getStatus() : String
++ getTotalPrice() : double
++ getDate() : LocalDateTime
++ setId() : void
++ setCarport() : void
++ setSellerId() : void
++ setStatus() : void
++ setTotalPrice() : void
++ setDate() : void
+}
+
+/'
+class Offer {
+- id : int
+- orderId : int
+- sellerId : int
+- status : String
+- price : double
+- date: LocalDateTime
++ getId() : int
++ getOrderId() : int
++ getSellerId() : int
++ getStatus() : String
++ getPrice() : double
++ getDate() : LocalDateTime
++ setId() : void
++ setOrderId() : void
++ setSellerId() : void
++ setStatus() : void
++ setPrice() : void
++ setDate() : void
+}
+'/
+
+class Carport {
+- id : int
+- length : int
+- width : int
+- height : int
+- partsList : PartsList
++ getId() : int
++ getLength() : int
++ getWidth() : int
++ getHeight() : int
++ getPartsList() : List<PartsList>
++ setId() : void
++ setLength() : void
++ setWidth() : void
++ setHeight() : void
++ setPartsList() : void
+}
+
+abstract class Material {
+- id : int
+- type : String
+- price : double
+- length : int
+- width : int
+- height : int
++ getId() : int
++ getType() : String
++ getPrice() : double
++ getLength() : int
++ getWidth() : int
++ getHeight() : int
++ setId() : void
++ setType() : void
++ setPrice() : void
++ setLength() : void
++ setWidth() : void
++ setHeight() : void
+}
+
+class Post extends Material {
+
+}
+
+class FasciaBoard extends Material{
+
+}
+
+class Beam extends Material {
+
+}
+
+class Rafter extends Material {
+
+}
+
+class RoofPanel extends Material {
+
+}
+
+/' last priority '/
+class Payment {
+
+}
+
+class PartsList {
+
+}
+
+User "1 " *-- "* " Order
+Order "1 " *-- "1 " Carport
+Carport "1 " *-- "1 " PartsList
+PartsList "1 " *-- "* " Material
+
+
+
+
+@enduml
